@@ -26,6 +26,7 @@ public class Main {
         PersonAbstract.printAll(persons);
         
         System.out.println();
+        
     }
     
 }
