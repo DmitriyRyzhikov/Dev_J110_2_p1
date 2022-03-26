@@ -1,7 +1,8 @@
 
 public abstract class PersonAbstract {
     
-    private String name, department;
+    private String name;
+    private String department;
     private Gender gender;
 
     public PersonAbstract(String name, Gender gender, String department) {
@@ -15,28 +16,31 @@ public abstract class PersonAbstract {
     }
 
     public final void setName(String name) {
-        if(name == null)
+        if (name != null && !name.trim().isEmpty()) 
+            this.name = name.trim();
+        else
             throw new IllegalArgumentException("Не указаны обязательные данные: фамилия и имя");
         
-        this.name = name;
     }
     public String getDepartment() {
         return department;
     }
     public final void setDepartment(String department) {
-        if(department == null)
+        if (department != null && !department.trim().isEmpty()) 
+            this.department = department.trim();
+        else
             throw new IllegalArgumentException("Не указаны обязательные данные: название факультета");
         
-        this.department = department;
     }
     public Gender getGender() {
         return gender;
     }
     public final void setGender(Gender gender) {
-        if(gender == null)
+        if(gender != null)
+            this.gender = gender;
+        else    
             throw new IllegalArgumentException("Не указаны обязательные данные: пол человека");
         
-        this.gender = gender;
     }
     public static void printAll(PersonAbstract[] persons) {
         
@@ -52,9 +56,8 @@ public abstract class PersonAbstract {
             else if(pers instanceof Aspirant) 
                 System.out.printf("Type of person: postgraduate   Name: %-15s   Gender: %-6s   Department: %-16s   Thesis title: %-10s%n",
                         pers.getName(), pers.getGender().getGenderString(), pers.getDepartment(), ((Aspirant)pers).getThesisTitle());
-            
             else
-                System.out.println("Этот товарищ не из нашего ВУЗа");
+                System.out.println("Этот товарищ не из нашего ВУЗа. Шутка");
         }    
     }
     public abstract void print();

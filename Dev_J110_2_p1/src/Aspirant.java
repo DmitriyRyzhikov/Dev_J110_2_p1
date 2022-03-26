@@ -2,7 +2,6 @@
 public class Aspirant extends PersonAbstract {
     
     private String thesisTitle;
-    private static final String STUDIES = "studies ";
 
     public Aspirant(String name, Gender gender, String department, String thesisTitle) {
         
@@ -13,18 +12,21 @@ public class Aspirant extends PersonAbstract {
         return thesisTitle;
     }
     public final void setThesisTitle(String thesisTitle) {
-        if(thesisTitle == null)
-            throw new IllegalArgumentException("Необходимо указать тему диссертации.");
-        
-        this.thesisTitle = thesisTitle;
+        if (thesisTitle != null && !thesisTitle.trim().isEmpty()) 
+            this.thesisTitle = thesisTitle.trim();
+        else
+            throw new IllegalArgumentException("Необходимо указать тему диссертации.");       
     }
+    
+    //переопределенный метод print()
     @Override
     public void print() {
         
+        String stu = "studies ";
         String first = "This is " + super.getName() + ". ";
         if(super.getGender() == Gender.M)
-           System.out.println(first + "He " + STUDIES + super.getDepartment() + ". His thesis title is “" + thesisTitle + "“");  
+           System.out.println(first + "He " + stu + super.getDepartment() + ". His thesis title is “" + thesisTitle + "“");  
         else
-           System.out.println(first + "She " + STUDIES + super.getDepartment() + ". Her thesis title is “" + thesisTitle + "“");   
+           System.out.println(first + "She " + stu + super.getDepartment() + ". Her thesis title is “" + thesisTitle + "“");   
     }   
 }

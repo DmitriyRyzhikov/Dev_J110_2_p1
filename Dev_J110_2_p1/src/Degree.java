@@ -4,7 +4,7 @@ public enum Degree {
     PHD("PhD"),
     MSC("MSc");
     
-    private String degree;
+    private final String degree;
     
     private Degree(String degree) {
     this.degree = degree;

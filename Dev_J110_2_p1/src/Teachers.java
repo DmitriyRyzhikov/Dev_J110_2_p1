@@ -16,10 +16,11 @@ public class Teachers extends PersonAbstract {
     }
 
     public final void setSpecialty(String specialty) {
-        if(specialty == null)
-            throw new IllegalArgumentException("Не указаны обязательные данные: специальность преподавателя");
+       if (specialty != null && !specialty.trim().isEmpty()) 
+            this.specialty = specialty.trim();
+        else
+           throw new IllegalArgumentException("Не указаны обязательные данные: специальность преподавателя");
         
-        this.specialty = specialty;
     }
 
     public Degree getDegree() {
@@ -27,12 +28,12 @@ public class Teachers extends PersonAbstract {
     }
 
     public final void setDegree(Degree degree) {
-        if(degree == null)
-            throw new IllegalArgumentException("Не указаны обязательные данные: ученая степень преподавателя");
-        
-        this.degree = degree;
+        if(degree != null)
+           this.degree = degree; 
+        else
+            throw new IllegalArgumentException("Не указаны обязательные данные: ученая степень преподавателя");        
     }
-
+    //переопределенный метод print()
     @Override
     public void print() {
         

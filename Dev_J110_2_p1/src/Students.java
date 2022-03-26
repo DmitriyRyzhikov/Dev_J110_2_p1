@@ -13,20 +13,23 @@ public class Students extends PersonAbstract {
         return courseNumber;
     }
     public final void setCourseNumber(int courseNumber) {
-        if(courseNumber <= 0)
+        if(courseNumber > 0)
+            this.courseNumber = courseNumber;
+        else
             throw new IllegalArgumentException("Номер курса указан неверно.");
         
-        this.courseNumber = courseNumber;
     }
     public Stage getStage() {
         return stage;
     }
     public final void setStage(Stage stage) {
-        if(stage == null)
-            throw new IllegalArgumentException("Ступень обучения студента указана неверно.");
-        
-        this.stage = stage;
-    }   
+        if(stage != null)
+           this.stage = stage; 
+        else
+           throw new IllegalArgumentException("Ступень обучения студента указана неверно.");        
+    } 
+    
+    //переопределенный метод print()
     @Override
     public void print() {
         

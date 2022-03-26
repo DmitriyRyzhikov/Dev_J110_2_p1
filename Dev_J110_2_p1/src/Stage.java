@@ -5,7 +5,7 @@ public enum Stage {
     BACHELOR("bachelor"),
     MASTER("master");
     
-    private String stage;
+    private final String stage;
 
     private Stage(String stage) {
         this.stage = stage;
